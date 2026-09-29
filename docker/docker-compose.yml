@@ -10,8 +10,11 @@ services:
       interval: 2s
       timeout: 5s
       retries: 30
+    # Postgres is a generic port every stack wants, so it lives on paperclip's own
+    # loopback IP (127.30.0.1 / paperclip.internal) instead of 0.0.0.0.
+    # Docker Desktop (macOS/Windows) only forwards 127.0.0.1 — override there.
     ports:
-      - "5432:5432"
+      - "${PAPERCLIP_DB_PUBLISH_HOST:-127.30.0.1}:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -28,8 +31,10 @@ services:
     # this container hits its own ceiling and dies visibly rather than starving
     # the whole host of pids.
     pids_limit: 2048
+    # Loopback only; 3100 is unique to paperclip and the CLI dials localhost:3100.
+    # Remote access goes through tailscale serve (packages/tailscale-https-broker).
     ports:
-      - "3100:3100"
+      - "${PAPERCLIP_PUBLISH_HOST:-127.0.0.1}:3100:3100"
     environment:
       DATABASE_URL: postgres://paperclip:paperclip@db:5432/paperclip
       PORT: "3100"

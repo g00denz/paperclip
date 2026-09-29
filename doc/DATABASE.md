@@ -51,18 +51,20 @@ For a full PostgreSQL server locally, use the included Docker Compose setup:
 docker compose up -d
 ```
 
-This starts PostgreSQL 17 on `localhost:5432`. Then set the connection string:
+This starts PostgreSQL 17 on `127.30.0.1:5432` (paperclip's own loopback IP, so it never
+collides with another project's Postgres; set `PAPERCLIP_DB_PUBLISH_HOST=127.0.0.1` on
+Docker Desktop, which only forwards 127.0.0.1). Then set the connection string:
 
 ```sh
 cp .env.example .env
 # .env already contains:
-# DATABASE_URL=postgres://paperclip:paperclip@localhost:5432/paperclip
+# DATABASE_URL=postgres://paperclip:paperclip@127.30.0.1:5432/paperclip
 ```
 
 Run migrations:
 
 ```sh
-DATABASE_URL=postgres://paperclip:paperclip@localhost:5432/paperclip \
+DATABASE_URL=postgres://paperclip:paperclip@127.30.0.1:5432/paperclip \
   pnpm db:migrate
 ```
 

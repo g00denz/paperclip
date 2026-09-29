@@ -32,17 +32,19 @@ For a full PostgreSQL server locally:
 docker compose up -d
 ```
 
-This starts PostgreSQL 17 on `localhost:5432`. Set the connection string:
+This starts PostgreSQL 17 on `127.30.0.1:5432` (paperclip's own loopback IP, so it never
+collides with another project's Postgres; set `PAPERCLIP_DB_PUBLISH_HOST=127.0.0.1` on
+Docker Desktop, which only forwards 127.0.0.1). Set the connection string:
 
 ```sh
 cp .env.example .env
-# DATABASE_URL=postgres://paperclip:paperclip@localhost:5432/paperclip
+# DATABASE_URL=postgres://paperclip:paperclip@127.30.0.1:5432/paperclip
 ```
 
 Push the schema:
 
 ```sh
-DATABASE_URL=postgres://paperclip:paperclip@localhost:5432/paperclip \
+DATABASE_URL=postgres://paperclip:paperclip@127.30.0.1:5432/paperclip \
   npx drizzle-kit push
 ```
 
