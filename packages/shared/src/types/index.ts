@@ -73,6 +73,16 @@ export type {
 } from "./decision-training.js";
 export { DECISION_TRAINING_RETENTION_POLICY } from "./decision-training.js";
 export type {
+  DecisionTrainingCorpusManifest,
+  DecisionTrainingCorpusRecord,
+  DecisionTrainingCorpusSplit,
+  DecisionTrainingFinding,
+} from "./decision-training-corpus.js";
+export {
+  DECISION_TRAINING_CORPUS_MANIFEST_SCHEMA,
+  DECISION_TRAINING_CORPUS_RECORD_SCHEMA,
+} from "./decision-training-corpus.js";
+export type {
   Environment,
   EnvironmentDeleteBlastRadius,
   EnvironmentDeleteReusableLeaseHolder,

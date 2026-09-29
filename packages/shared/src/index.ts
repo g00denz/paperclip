@@ -235,6 +235,16 @@ export type {
   DecisionTrainingSourceKind,
 } from "./types/decision-training.js";
 export { DECISION_TRAINING_RETENTION_POLICY } from "./types/decision-training.js";
+export type {
+  DecisionTrainingCorpusManifest,
+  DecisionTrainingCorpusRecord,
+  DecisionTrainingCorpusSplit,
+  DecisionTrainingFinding,
+} from "./types/decision-training-corpus.js";
+export {
+  DECISION_TRAINING_CORPUS_MANIFEST_SCHEMA,
+  DECISION_TRAINING_CORPUS_RECORD_SCHEMA,
+} from "./types/decision-training-corpus.js";
 
 export type {
   PipelineAutomationRetryBlocker,

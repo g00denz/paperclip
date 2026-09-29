@@ -10,3 +10,4 @@ export * from "./workflow-traceability.js";
 export * from "./workflow-report.js";
 export * from "./live-workflow-matrix.js";
 export * from "./live-workflow-executor.js";
+export * from "./decision-training-corpus-baseline.js";

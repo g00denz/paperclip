@@ -82,3 +82,10 @@ test-results/
 
 # Retained local lifecycle behavior measurements
 .lifecycle-baseline/
+
+# Decision training corpus artifacts. corpus-raw.jsonl can contain live captured
+# text; generated corpora are reproducible from it and must not be committed.
+evals/decision-training/corpus-raw.jsonl
+evals/decision-training/corpus-*.jsonl
+evals/decision-training/corpus-manifest.json
+evals/decision-training/baseline-corpus.json
